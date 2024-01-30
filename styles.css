@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-image: url(./images/selected.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.shop {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12%;
+}
+
+.mid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 33%;
+}
+
+.upgrade{
+    width: 33%;
+}
+
+.bonus{
+    right: 0;
+}
+
+.error1{
+    display: none;
+}
+
+.error{
+    display: block;
+}
+
+.s{
+    margin-top: 4%;
+    font-size: 1rem;
+    background-color: rgb(251, 251, 251);
+    width: 30%;
+    text-align: center;
+    color: rgb(128, 128, 128);
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    margin-left: 48%;
+}
+
+
+
+.coins{
+    background-color: transparent;
+    border: transparent;
+    border-radius: 100%;
+    overflow: hidden;
+    height: 18rem;
+}
+
+.coins img{
+    height: 250px;
+    object-fit: contain;
+}
+
+.coins img:active{
+    height: 240px;
+    filter: brightness(0.9);
+}
+
+.bonus>span {
+    pointer-events: none;
+}
+
+.title-shop{
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    pointer-events: all;
+}
+
+.bonus{
+    margin-bottom: 1rem;
+    display: flex;
+    margin-left: 1rem;
+    width: 70%;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(228 228 228);
+    transition: all .5s ease;
+}
+
+.bonus:hover {
+    background-color: rgb(201, 201, 201);
+    transition: all .5s ease;
+}
+
+.bonus img{
+    height: 80px;
+    pointer-events: none;
+    margin-right: 1rem;
+}
+
+
+.title-button{ 
+    pointer-events: none;
+    width: 35%;
+}
+
+.tilte-button__h4{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgb(87, 87, 87);
+    padding-top: 6%;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.title-button__p{
+    width: 50%;
+    margin-top: 4%;
+    font-weight: 600;
+    color: #E80404;
+    pointer-events: none;
+    display: flex;
+        justify-content: flex-start;
+}
+
+.title-button__p.green{
+    color: #00BE2A;
+}
+
+.end-button{
+    margin: auto;
+    font-size: 3rem;
+    padding-left: 3.4rem;
+    color: rgba(128, 128, 128, 0.452);
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.coinscountstyle{
+    font-size: 2rem;
+    background-color: rgb(251, 251, 251);
+    width: 60%;
+    text-align: center;
+    color: rgb(128, 128, 128);
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);  
+    padding: .5rem;
+}
+
+/* .pick{
+    height: 50px !important;
+    margin-top: .4rem !important;
+    margin-right: 1.6rem !important;
+} */
+
+
+.click {
+    margin-bottom: 1rem;
+    display: flex;
+    margin-left: 1rem;
+    width: 70%;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(228 228 228);
+    transition: all .5s ease;
+}
+
+.click:hover {
+    background-color: rgb(201, 201, 201);
+    transition: all .5s ease;
+}
+
+.click img {
+    height: 80px;
+    pointer-events: none;
+    margin-right: 1rem;
+}
+
+
+.upgrade{
+    margin-top: 12%;
+}
+
+.upgrade2{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.wrap_img{
+    background-color: rgb(228 228 228);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all .5s ease;
+}
+
+.wrap_img:hover {
+    background-color: rgb(209, 207, 207);
+    transition: all .5s ease;
+}
+
+.img_upgrade{
+    height: 40px;
+}
+
+.image_rose{
+    filter: grayscale(100%) hue-rotate(90deg);
+}
