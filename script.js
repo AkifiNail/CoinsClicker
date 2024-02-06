@@ -12,6 +12,20 @@ let buttonColors = document.querySelector(".title-button__p");
 let buyCount = document.querySelectorAll(".end-button");
 let countBuy = 0;
 let clear = document.querySelector(".clear");
+let clearBoutton = document.querySelector(".modal-clear");
+let endmodale = document.querySelector(".modal-end");
+
+clearBoutton.addEventListener("click", function () {
+  let modalClear = document.querySelector(".modal-none");
+  modalClear.classList.add("modal");
+  modalClear.classList.remove("modal-none");
+});
+
+endmodale.addEventListener("click", function () {
+  let modalClear = document.querySelector(".modal");
+  modalClear.classList.remove("modal");
+  modalClear.classList.add("modal-none");
+});
 
 coins.addEventListener("click", function () {
   currentCount += clicksMultiplicateur;
