@@ -1,7 +1,7 @@
 let coins = document.querySelector(".coins");
 let coinsCount = document.querySelector(".coinscount");
 let bonus = document.querySelectorAll(".bonus");
-let currentCount = 0;
+let currentCount = 4000000;
 let error = document.querySelector(".error1");
 let perSec = document.getElementById("perSec");
 let coinperSec = 0;
@@ -30,13 +30,33 @@ endmodale.addEventListener("click", function () {
 
 coins.addEventListener("click", function () {
   currentCount += clicksMultiplicateur;
-  coinsCount.textContent = currentCount;
+  let displayCost;
+
+  if (currentCount >= 1000000) {
+    displayCost = (currentCount / 1000000).toFixed(2) + " Millions";
+  }
+  if (displayCost) {
+    coinsCount.textContent = displayCost;
+  } else {
+    coinsCount.textContent = currentCount.toLocaleString("fr-FR");
+  }
+  // coinsCount.textContent = currentCount;
   updateButtonColors();
 });
 
 function addBonusCoins() {
   currentCount += secMultiplicateur;
-  coinsCount.textContent = currentCount.toLocaleString("fr-FR");
+  let displayCost;
+
+  if (currentCount >= 1000000) {
+    displayCost = (currentCount / 1000000).toFixed(2) + " Millions";
+  }
+  if (displayCost) {
+    coinsCount.textContent = displayCost;
+  } else {
+    coinsCount.textContent = currentCount.toLocaleString("fr-FR");
+  }
+
   updateButtonColors();
 }
 
