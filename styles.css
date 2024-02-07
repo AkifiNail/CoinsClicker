@@ -144,6 +144,7 @@ main{
     pointer-events: none;
     display: flex;
         justify-content: flex-start;
+        white-space: nowrap;
 }
 
 .title-button__p.green{
@@ -216,6 +217,7 @@ main{
     padding: 1rem;
     border-radius: 10px;
     transition: all .5s ease;
+   
 }
 
 .wrap_img:hover {
@@ -225,6 +227,7 @@ main{
 
 .img_upgrade{
     height: 40px;
+    pointer-events: none;
 }
 
 .image_rose{

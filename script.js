@@ -14,6 +14,7 @@ let countBuy = 0;
 let clear = document.querySelector(".clear");
 let clearBoutton = document.querySelector(".modal-clear");
 let endmodale = document.querySelector(".modal-end");
+let upgrades = document.querySelectorAll(".upgrade-item");
 
 clearBoutton.addEventListener("click", function () {
   let modalClear = document.querySelector(".modal-none");
@@ -52,26 +53,44 @@ function updateButtonColors() {
 }
 updateButtonColors();
 
-function countbuy() {}
-
 function addBonus(e) {
   if (checkPrice(e.target.dataset.prix)) {
     let newCost = 0;
+    let displayCost = 0;
     let prix = parseInt(e.target.dataset.prix);
+    let bonusAdd = parseInt(e.target.dataset.bonus);
+    let quantite = parseInt(e.target.dataset.much);
     currentCount -= prix; // enlever le coins
-    secMultiplicateur += parseInt(e.target.dataset.bonus); // appliquer le bonus
-    if (prix >= 10000) {
-      newCost = Math.floor((prix * 1.4) / 100) * 100; // declaration de la variable newCost qui contient le nouveau prix
+    secMultiplicateur += bonusAdd; // appliquer le bonus
+    if (prix >= 1000000) {
+      newCost = Math.floor((prix * 1.4) / 100000) * 100000;
+      displayCost = newCost / 1000000 + " Millions"; // Correction ici pour afficher "millions"
+    } else if (prix >= 100000) {
+      newCost = Math.floor((prix * 1.4) / 10000) * 10000;
+    } else if (prix >= 10000) {
+      newCost = Math.floor((prix * 1.4) / 100) * 100;
     } else {
-      newCost = Math.round(prix * 1.4); // declaration de la variable newCost qui contient le nouveau prix
-    } // declaration de la variable newCost qui contient le nouveau prix
+      newCost = Math.round(prix * 1.4);
+    }
+
+    if (quantite >= 5) {
+      newBonus = Math.round(bonusAdd * 1.3);
+    } else {
+      newBonus = Math.round(bonusAdd * 1);
+    }
     let newCount = parseInt(e.target.dataset.much) + 1;
     e.target.dataset.much = newCount;
-    e.target.querySelector(".bonus-cost").textContent =
-      newCost.toLocaleString("fr-FR"); // remplace le contenu textuel du premiere enfant
+    if (displayCost) {
+      e.target.querySelector(".bonus-cost").textContent =
+        displayCost.toLocaleString("fr-FR");
+    } else {
+      e.target.querySelector(".bonus-cost").textContent =
+        newCost.toLocaleString("fr-FR");
+    }
     e.target.querySelector(".end-button").textContent =
       newCount.toLocaleString("fr-FR");
     e.target.dataset.prix = newCost;
+    e.target.dataset.bonus = newBonus;
     coinsCount.textContent = currentCount; //set le nouveau prix
     perSec.textContent = secMultiplicateur;
   }
@@ -83,19 +102,31 @@ function clickBonus(e) {
     let prix = parseInt(e.target.dataset.prix);
     currentCount -= prix; // enlever le coins
     clicksMultiplicateur += parseInt(e.target.dataset.bonus); // appliquer le bonus
-    if (prix >= 10000) {
+    if (prix >= 1000) {
       newCost = Math.floor((parseInt(e.target.dataset.prix) * 1.8) / 100) * 100; // declaration de la variable newCost qui contient le nouveau prix
+    } else if (prix >= 10000) {
+      newCost =
+        Math.floor((parseInt(e.target.dataset.prix) * 1.8) / 1000) * 1000;
     } else {
       newCost = Math.round(parseInt(e.target.dataset.prix) * 1.8); // declaration de la variable newCost qui contient le nouveau prix
     }
     let newCount = parseInt(e.target.dataset.much) + 1;
-    console.log(newCount);
     e.target.dataset.much = newCount;
     e.target.querySelector(".clickbonus").textContent = newCost;
     e.target.querySelector(".end-button").textContent = newCount;
     e.target.firstElementChild.textContent = newCost; // remplace le contenu textuel du premiere enfant
     e.target.dataset.prix = newCost;
     coinsCount.textContent = currentCount;
+  }
+}
+
+function upgrade(e) {
+  if (checkPrice(e.target.dataset.prix)) {
+    let upgradePrice = parseInt(e.target.dataset.prix);
+    currentCount -= upgradePrice; //retire les coins
+    let cible = document.getElementById(e.target.dataset.cible); // recupere l'élément ciblé
+    cible.dataset.bonus = Math.round(parseInt(cible.dataset.bonus) * 2);
+    e.target.removeEventListener("click", upgrade);
   }
 }
 
@@ -108,6 +139,10 @@ function checkPrice(price) {
 
 for (let i = 0; i < bonus.length; i++) {
   bonus[i].addEventListener("click", addBonus);
+}
+
+for (let i = 0; i < upgrades.length; i++) {
+  upgrades[i].addEventListener("click", upgrade);
 }
 
 for (let i = 0; i < clicks.length; i++) {
@@ -125,7 +160,6 @@ function saveGameData() {
     clicksMultiplicateur: clicksMultiplicateur,
     bonus: [],
     clicks: [],
-    // buyCount: [],
 
     // Ajoutez d'autres données du jeu au besoin
   };
@@ -139,10 +173,6 @@ function saveGameData() {
     gameData.clicks.push(y.dataset.much);
   }
 
-  // for (let k of buyCount) {
-  //   gameData.buyCount.push(k.dataset.much);
-  // }
-
   localStorage.setItem("gameData", JSON.stringify(gameData));
 }
 
@@ -154,11 +184,7 @@ function loadGameData() {
     clicksMultiplicateur = gameData.clicksMultiplicateur;
     bonusSave = gameData.bonus;
     clicksSave = gameData.clicks;
-    // buyCountSave = gameData.buyCount;
 
-    // Récupérez d'autres données sauvegardées au besoin
-
-    // Assurez-vous de mettre à jour l'interface utilisateur avec les valeurs chargées
     coinsCount.textContent = currentCount;
     perSec.textContent = secMultiplicateur;
 
@@ -181,8 +207,6 @@ function loadGameData() {
       btn.querySelector(".clickbonus").textContent = prix;
       btn.querySelector(".end-button").textContent = much;
     }
-
-    // Mettre à jour d'autres éléments d'interface utilisateur selon les besoins
   }
 }
 
