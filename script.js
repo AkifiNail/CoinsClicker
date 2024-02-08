@@ -1,7 +1,7 @@
 let coins = document.querySelector(".coins");
 let coinsCount = document.querySelector(".coinscount");
 let bonus = document.querySelectorAll(".bonus");
-let currentCount = 100;
+let currentCount = 0;
 let error = document.querySelector(".error1");
 let perSec = document.getElementById("perSec");
 let coinperSec = 0;
@@ -74,7 +74,7 @@ function updateButtonColors() {
 updateButtonColors();
 
 function updateBonusColors() {
-  document.querySelectorAll(".title-button__p").forEach((element) => {
+  document.querySelectorAll(".title-button__p2").forEach((element) => {
     const button = element.parentElement;
     const prix = parseInt(button.dataset.prix);
     if (prix <= currentCount) {
