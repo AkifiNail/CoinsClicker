@@ -172,12 +172,6 @@ main{
     padding: .5rem;
 }
 
-/* .pick{
-    height: 50px !important;
-    margin-top: .4rem !important;
-    margin-right: 1.6rem !important;
-} */
-
 
 .click {
     margin-bottom: 1rem;
@@ -331,4 +325,20 @@ background-color: gray;
         transition: all .3s ease;
         cursor: pointer;
         color: white;
+}
+
+.green-effect{
+animation: green ease 3s;
+}
+
+@keyframes green {
+    0%{
+       background-color: rgb(228 228 228);
+    }
+    50%{
+        background-color: rgb(194, 255, 195);
+    }
+    100%{
+    background-color: rgb(228 228 228);
+    }   
 }

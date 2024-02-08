@@ -1,7 +1,7 @@
 let coins = document.querySelector(".coins");
 let coinsCount = document.querySelector(".coinscount");
 let bonus = document.querySelectorAll(".bonus");
-let currentCount = 4000000;
+let currentCount = 100;
 let error = document.querySelector(".error1");
 let perSec = document.getElementById("perSec");
 let coinperSec = 0;
@@ -40,7 +40,6 @@ coins.addEventListener("click", function () {
   } else {
     coinsCount.textContent = currentCount.toLocaleString("fr-FR");
   }
-  // coinsCount.textContent = currentCount;
   updateButtonColors();
 });
 
@@ -58,6 +57,7 @@ function addBonusCoins() {
   }
 
   updateButtonColors();
+  updateBonusColors();
 }
 
 function updateButtonColors() {
@@ -72,6 +72,19 @@ function updateButtonColors() {
   });
 }
 updateButtonColors();
+
+function updateBonusColors() {
+  document.querySelectorAll(".title-button__p").forEach((element) => {
+    const button = element.parentElement;
+    const prix = parseInt(button.dataset.prix);
+    if (prix <= currentCount) {
+      element.classList.add("green");
+    } else {
+      element.classList.remove("green");
+    }
+  });
+}
+updateBonusColors();
 
 function addBonus(e) {
   if (checkPrice(e.target.dataset.prix)) {
@@ -147,6 +160,8 @@ function upgrade(e) {
     let cible = document.getElementById(e.target.dataset.cible); // recupere l'élément ciblé
     cible.dataset.bonus = Math.round(parseInt(cible.dataset.bonus) * 2);
     e.target.removeEventListener("click", upgrade);
+    cible.classList.add("green-effect");
+    console.log(cible);
   }
 }
 
