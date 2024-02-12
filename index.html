@@ -38,14 +38,14 @@
         <button type="button" class="click" data-prix="550" data-bonus="2" data-much="0">
           <img src="./images/souris.png" class="pick" />
           <div class="title-button">
-            <h4 class="tilte-button__h4">MouseCliker</h4>
+            <h4 class="tilte-button__h4">MouseClicker</h4>
             <p class="title-button__p">
               cost&nbsp;<span class="clickbonus">550</span>
             </p>
           </div>
           <h3 class="end-button">0</h3>
         </button>
-        <button type="button" class="bonus" data-prix="1200" data-bonus="12" data-much="0">
+        <button type="button" class="bonus" data-prix="1200" data-bonus="12" data-much="0" id="cave">
           <img src="./images/cave.png" class="pick" />
           <div class="title-button">
             <h4 class="tilte-button__h4">The Cave</h4>
@@ -68,7 +68,7 @@
           <h3 class="end-button">0</h3>
         </button>
         <button type="button" class="bonus mine bonus-hidden" data-prix="21500" data-bonus="30" data-much="0"
-          data-unlock="6000">
+          data-unlock="6000" id="serveur">
           <img src="./images/serveur.png" class="pick " />
           <div class="title-button">
             <h4 class="tilte-button__h4">Serveur</h4>
@@ -160,22 +160,53 @@
     <section class="upgrade">
       <h1 class="title-shop">Upgrades 🚀</h1>
       <section class="upgrade2">
-        <button class="wrap_img upgrade-item" data-prix="100000" data-cible="hand">
+        <button class="wrap_img upgrade-item" data-prix="20000" data-cible="hand"
+          data-tooltip="Double coins/s of HandClicker">
           <img src="./images/main.png" alt="image de souris pour upgrade" class="img_upgrade image_rose" />
           <p class="title-button__p2">
-            cost&nbsp;<span class="bonus-cost">100 000</span>
+            cost&nbsp;<span class="bonus-cost">20 000</span>
           </p>
         </button>
-        <button class="wrap_img upgrade-item" data-prix="400000" data-cible="hand">
+        <button class="wrap_img upgrade-item" data-prix="50000" data-cible="hand"
+          data-tooltip="Double coins/s of HandClicker">
           <img src="./images/main.png" alt="image de souris pour upgrade" class="img_upgrade image_gold" />
           <p class="title-button__p2">
-            cost&nbsp;<span class="bonus-cost">400 000</span>
+            cost&nbsp;<span class="bonus-cost">50 000</span>
           </p>
         </button>
-        <button class="wrap_img upgrade-item" data-prix="800000" data-cible="hand">
+        <button class="wrap_img upgrade-item" data-prix="100000" data-cible="hand"
+          data-tooltip="Double coins/s of HandClicker">
           <img src="./images/main.png" alt="image de souris pour upgrade" class="img_upgrade image_blue" />
           <p class="title-button__p2">
+            cost&nbsp;<span class="bonus-cost">100 000 </span>
+          </p>
+        </button>
+        <button class="wrap_img upgrade-item" data-prix="500000" data-cible="cave"
+          data-tooltip="Double coins/s of  The Cave">
+          <img src="./images/cave.png" alt="image de souris pour upgrade" class="img_upgrade image_rose" />
+          <p class="title-button__p2">
+            cost&nbsp;<span class="bonus-cost">500 000</span>
+          </p>
+        </button>
+        <button class="wrap_img upgrade-item" data-prix="800000" data-cible="cave"
+          data-tooltip="Double coins/s of  The Cave">
+          <img src="./images/cave.png" alt="image de souris pour upgrade" class="img_upgrade image_gold" />
+          <p class="title-button__p2">
             cost&nbsp;<span class="bonus-cost">800 000</span>
+          </p>
+        </button>
+        <button class="wrap_img upgrade-item" data-prix="800000" data-cible="serveur"
+          data-tooltip="Double coins/s of  cave">
+          <img src="./images/cave.png" alt="image de souris pour upgrade" class="img_upgrade image_blue" />
+          <p class="title-button__p2">
+            cost&nbsp;<span class="bonus-cost">1 000 000</span>
+          </p>
+        </button>
+        <button class="wrap_img upgrade-item" data-prix="800000" data-cible="cave"
+          data-tooltip="Double coins/s of  serveur">
+          <img src="./images/serveur.png" alt="image de souris pour upgrade" class="img_upgrade image_blue" />
+          <p class="title-button__p2">
+            cost&nbsp;<span class="bonus-cost">2 000 000</span>
           </p>
         </button>
       </section>
