@@ -1,3 +1,4 @@
+@import "bar.css";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 *{
@@ -24,6 +25,9 @@ main{
     display: flex;
     flex-direction: column;
     margin-top: 12%;
+    overflow-y: scroll;
+    /* height: calc((80px + 1rem) * 5); */
+    height: 71%;
 }
 
 .mid{
@@ -221,6 +225,7 @@ main{
 .upgrade2{
     display: flex;
     flex-wrap: nowrap;
+    gap: 30px;
 }
 
 .wrap_img{
@@ -228,7 +233,8 @@ main{
     padding: 1rem;
     border-radius: 10px;
     transition: all .5s ease;
-   
+   border: 0;
+box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .wrap_img:hover {
@@ -245,6 +251,13 @@ main{
     filter: invert(67%) sepia(99%) saturate(2570%) hue-rotate(301deg) brightness(100%) contrast(99%);
 }
 
+.image_gold {
+    filter: invert(62%) sepia(80%) saturate(1500%) hue-rotate(-5deg) brightness(110%) contrast(110%);
+}
+
+.image_blue {
+    filter: hue-rotate(180deg) saturate(200%) brightness(90%) contrast(90%);
+}
 .modal-none{
     display: none !important;
     position: absolute;
@@ -358,4 +371,27 @@ animation: green ease 3s;
     100%{
     background-color: rgb(228 228 228);
     }   
+}
+
+.bonus-hidden.unlock .tilte-button__h4:nth-child(2),
+.bonus-hidden .tilte-button__h4:nth-child(1),
+.bonus-hidden.unlock .bonus-cost:nth-child(2),
+.bonus-hidden .bonus-cost:nth-child(1){
+    display: none;
+}
+
+.bonus-hidden.unlock .tilte-button__h4:nth-child(1),
+.bonus-hidden.unlock .bonus-cost:nth-child(1) {
+    display: block;
+    text-align: left;
+}
+
+.bonus-hidden.unlock .pick{
+    filter: contrast(1);
+    transition: all 1s ease-in-out;
+}
+
+.bonus-hidden .pick {
+    filter: contrast(0);
+    transition: all 1s ease-in-out;
 }

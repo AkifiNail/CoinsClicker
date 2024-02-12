@@ -1,7 +1,7 @@
 let coins = document.querySelector(".coins");
 let coinsCount = document.querySelector(".coinscount");
 let bonus = document.querySelectorAll(".bonus");
-let currentCount = 0;
+let currentCount = 1990;
 let error = document.querySelector(".error1");
 let perSec = document.getElementById("perSec");
 let coinperSec = 0;
@@ -15,6 +15,7 @@ let clear = document.querySelector(".clear");
 let clearBoutton = document.querySelector(".modal-clear");
 let endmodale = document.querySelector(".modal-end");
 let upgrades = document.querySelectorAll(".upgrade-item");
+let hidden = document.querySelectorAll(".bonus-hidden");
 
 clearBoutton.addEventListener("click", function () {
   let modalClear = document.querySelector(".modal-none");
@@ -68,6 +69,13 @@ function updateButtonColors() {
       element.classList.add("green");
     } else {
       element.classList.remove("green");
+    }
+  });
+
+  document.querySelectorAll(".bonus-hidden").forEach((element) => {
+    const dataLock = parseInt(element.dataset.unlock);
+    if (currentCount >= dataLock) {
+      element.classList.add("unlock");
     }
   });
 }
@@ -195,18 +203,30 @@ function saveGameData() {
     clicksMultiplicateur: clicksMultiplicateur,
     bonus: [],
     clicks: [],
-
-    // Ajoutez d'autres données du jeu au besoin
+    hidden: [],
+    // upgrade: [],
   };
   for (let x of bonus) {
     gameData.bonus.push(x.dataset.prix);
     gameData.bonus.push(x.dataset.much);
   }
 
+  for (let y of hidden) {
+    if (y.classList.contains("unlock")) {
+      gameData.hidden.push(true);
+    } else {
+      gameData.hidden.push(false);
+    }
+  }
+
   for (let y of clicks) {
     gameData.clicks.push(y.dataset.prix);
     gameData.clicks.push(y.dataset.much);
   }
+
+  // for (let x of upgrade) {
+  //   gameData.upgrades.push(x.dataset.prix);
+  // }
 
   localStorage.setItem("gameData", JSON.stringify(gameData));
 }
@@ -219,6 +239,7 @@ function loadGameData() {
     clicksMultiplicateur = gameData.clicksMultiplicateur;
     bonusSave = gameData.bonus;
     clicksSave = gameData.clicks;
+    hiddenSave = gameData.hidden;
 
     coinsCount.textContent = currentCount;
     perSec.textContent = secMultiplicateur;
@@ -231,6 +252,13 @@ function loadGameData() {
       btn.dataset.much = much;
       btn.querySelector(".bonus-cost").textContent = prix;
       btn.querySelector(".end-button").textContent = much;
+    }
+
+    for (let i = 0; i < hiddenSave.length; i++) {
+      if (hiddenSave[i]) {
+        let btn = hidden[i];
+        btn.classList.add("unlock");
+      }
     }
 
     for (let i = 0; i < clicksSave.length; i += 2) {

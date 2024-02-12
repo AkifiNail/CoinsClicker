@@ -1,0 +1,31 @@
+*::-webkit-scrollbar {
+    width: 8px;
+    /* Adjust the width of the scrollbar */
+    height: 8px;
+    /* Adjust the height of the scrollbar for horizontal scroll */
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    /* Color of the scrollbar track */
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5);
+    /* Color of the scrollbar thumb */
+    border-radius: 4px;
+    /* Rounded corners of the scrollbar thumb */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.7);
+    /* Color of the scrollbar thumb on hover */
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    /* "auto" or "thin" */
+    scrollbar-color: rgba(128, 128, 128, 0.5) rgba(0, 0, 0, 0.1);
+    /* Thumb and track color */
+}
