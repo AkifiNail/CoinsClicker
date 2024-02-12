@@ -1,7 +1,7 @@
 let coins = document.querySelector(".coins");
 let coinsCount = document.querySelector(".coinscount");
 let bonus = document.querySelectorAll(".bonus");
-let currentCount = 1990;
+let currentCount = 0;
 let error = document.querySelector(".error1");
 let perSec = document.getElementById("perSec");
 let coinperSec = 0;
@@ -168,6 +168,7 @@ function upgrade(e) {
     let cible = document.getElementById(e.target.dataset.cible); // recupere l'élément ciblé
     cible.dataset.bonus = Math.round(parseInt(cible.dataset.bonus) * 2);
     e.target.removeEventListener("click", upgrade);
+    e.target.classList.add("out");
     cible.classList.add("green-effect");
     console.log(cible);
   }
